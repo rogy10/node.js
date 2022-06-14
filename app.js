@@ -1,3 +1,4 @@
+console.log('Hey Ninjas')
 var stuff = require('./stuff');
 
 console.log(stuff.counter(['shaun', 'crystal', 'ryu']));
