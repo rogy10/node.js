@@ -67,3 +67,16 @@ people.forEach(function(Person){
 
 James.emit('speak', 'hey dudes');
 Ryu.emit('speak', 'I want a curry');
+
+
+
+var fs = require('fs');
+
+// var readMe = fs.readFileSync('readMe.txt', 'utf8');
+// fs.writeFileSync('writeMe.txt', readMe);
+
+fs.readFile('readMe.txt', 'utf8', function(err,data){
+    console.log(data);
+});
+
+console.log('test')
