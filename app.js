@@ -37,40 +37,40 @@
 
 
 
-var stuff = require('./stuff');
+// var stuff = require('./stuff');
 
-console.log(stuff.counter(['shaun', 'crystal', 'ryu']));
-console.log(stuff.adder(5,6));
-console.log(stuff.adder(stuff.pi, 5));
-
-
-
-var events = require('events');
-var util = require('util');
-
-var Person = function(name){
-    this.name = name;
-}
-
-util.inherits(Person, events.EventEmitter);
-
-var James = new Person('James');
-var Mary = new Person('Mary');
-var Ryu = new Person('Ryu');
-var people = [James, Mary, Ryu];
-
-people.forEach(function(Person){
-    Person.on('speak', function(mssg){
-        console.log(Person.name + ' said ' + mssg);
-    })
-});
-
-James.emit('speak', 'hey dudes');
-Ryu.emit('speak', 'I want a curry');
+// console.log(stuff.counter(['shaun', 'crystal', 'ryu']));
+// console.log(stuff.adder(5,6));
+// console.log(stuff.adder(stuff.pi, 5));
 
 
 
-var fs = require('fs');
+// var events = require('events');
+// var util = require('util');
+
+// var Person = function(name){
+//     this.name = name;
+// }
+
+// util.inherits(Person, events.EventEmitter);
+
+// var James = new Person('James');
+// var Mary = new Person('Mary');
+// var Ryu = new Person('Ryu');
+// var people = [James, Mary, Ryu];
+
+// people.forEach(function(Person){
+//     Person.on('speak', function(mssg){
+//         console.log(Person.name + ' said ' + mssg);
+//     })
+// });
+
+// James.emit('speak', 'hey dudes');
+// Ryu.emit('speak', 'I want a curry');
+
+
+
+// var fs = require('fs');
 
 // var readMe = fs.readFileSync('readMe.txt', 'utf8');
 // fs.writeFileSync('writeMe.txt', readMe);
@@ -92,3 +92,21 @@ var fs = require('fs');
 // fs.unlink('./stuff/writeMe.txt', function(){
 //     fs.rmdir('stuff');
 // });
+
+
+
+var http = require('http');
+var fs = require('fs');
+
+var server = http.createServer(function(req, res){
+    console.log('request was made:' + req.url); 
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    var myReadStream = fs.createReadStream(__dirname + '/index.html', 'utf8');
+    myReadStream.pipe(res);
+});
+
+server.listen(3000, '127.0.0.1');
+console.log('yo dawgs now listening to to port 3000');
+
+
+
